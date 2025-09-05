@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Showa-IA — Fluxo Completo</title>
+<style>
+  :root{
+    --bg:#0b0f14; --card:#111821; --accent:#6ee7ff; --accent2:#a78bfa;
+    --green:#34d399; --orange:#fb923c; --red:#f87171; --muted:#94a3b8; --ink:#e5f0ff;
+  }
+  html,body{height:100%}
+  body{margin:0;background:linear-gradient(180deg,#070b0f,#0b1220 40%,#0c1626);
+       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial,sans-serif;color:var(--ink)}
+  .wrap{max-width:1280px;margin:auto;padding:28px 20px 80px}
+  header{display:flex;align-items:center;gap:14px;margin:8px 0 24px}
+  header h1{font-size:24px;margin:0;letter-spacing:.3px}
+  header small{color:var(--muted)}
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+        border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 24px rgba(0,0,0,.25);
+        border-radius:16px;padding:18px;margin:20px 0}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--muted)}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;
+        border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .lane-gestor{background:#0ea5e9}.lane-sistema{background:#22d3ee}.lane-crm{background:#a78bfa}
+  .lane-wa{background:#22c55e}.lane-cliente{background:#f59e0b}
+  .svgbox{width:100%;height:auto;display:block}
+  h2{font-size:18px;margin:0 0 10px}
+  .notes{font-size:13px;color:var(--muted);line-height:1.5}
+  .caption{margin-top:10px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="4" width="7" height="6" rx="2" stroke="var(--accent)" stroke-width="1.5"/>
+        <rect x="14" y="4" width="7" height="6" rx="2" stroke="var(--accent2)" stroke-width="1.5"/>
+        <rect x="3" y="14" width="18" height="6" rx="2" stroke="var(--green)" stroke-width="1.5"/>
+      </svg>
+      <h1>Showa-IA — Fluxo Operacional </h1>
+      <small>Visual interativo simples para apresentação</small>
+    </header>
+
+    <div class="card">
+      <div class="legend">
+        <span class="pill"><span class="dot lane-gestor"></span>Gestor</span>
+        <span class="pill"><span class="dot lane-sistema"></span>Sistema Showa-IA</span>
+        <span class="pill"><span class="dot lane-crm"></span>CRM (Kanban)</span>
+        <span class="pill"><span class="dot lane-wa"></span>WhatsApp</span>
+        <span class="pill"><span class="dot lane-cliente"></span>Cliente</span>
+      </div>
+    </div>
+
+    <!-- DIAGRAMA 1: Fluxo Macro (Sequência) -->
+    <div class="card">
+      <h2>1) Fluxo Macro — Seleção & Conversa</h2>
+      <svg class="svgbox" viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#9dd6ff" />
+          </marker>
+          <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0b1c2b"/><stop offset="100%" stop-color="#0f2234"/>
+          </linearGradient>
+        </defs>
+
+        <g font-family="Inter,Arial" font-size="12" fill="#c7d2fe" opacity=".9">
+          <text x="70" y="40">Gestor</text>
+          <text x="70" y="220">Sistema Showa-IA</text>
+          <text x="70" y="400">CRM (Kanban)</text>
+          <text x="70" y="580">WhatsApp</text>
+          <text x="1070" y="580">Cliente</text>
+        </g>
+
+        <!-- Gestor: campanha -->
+        <rect x="30" y="60" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#6ee7ff" opacity=".9"/>
+        <text x="160" y="100" text-anchor="middle" fill="#e6f4ff" font-size="14">Seleciona leads & ativa IA</text>
+        <text x="160" y="115" text-anchor="middle" fill="#94a3b8" font-size="11">Campanha / filtros / produto</text>
+
+        <!-- Sistema lê CRM -->
+        <rect x="330" y="240" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#6ee7ff"/>
+        <text x="460" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Sync CRM</text>
+        <text x="460" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">leads, colunas, notas, perfil</text>
+
+        <!-- Envia WhatsApp (sempre GPT) -->
+        <rect x="330" y="560" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#34d399"/>
+        <text x="460" y="592" text-anchor="middle" fill="#e6f4ff" font-size="14">Envia mensagem</text>
+        <text x="460" y="610" text-anchor="middle" fill="#94a3b8" font-size="11">Gerada na hora (GPT) — Persona Leandro + Perfil CRM</text>
+
+        <!-- Cliente responde -->
+        <rect x="930" y="560" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#fbbf24"/>
+        <text x="1060" y="592" text-anchor="middle" fill="#e6f4ff" font-size="14">Cliente responde</text>
+        <text x="1060" y="610" text-anchor="middle" fill="#94a3b8" font-size="11">texto / mídia / áudio</text>
+
+        <!-- IA interpreta -->
+        <rect x="640" y="240" rx="12" ry="12" width="260" height="90" fill="url(#g1)" stroke="#6ee7ff"/>
+        <text x="770" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Interpretar intenção</text>
+        <text x="770" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">LLM + perfil + regras Leandro</text>
+
+        <!-- Branches -->
+        <rect x="80" y="420" rx="12" ry="12" width="240" height="70" fill="url(#g1)" stroke="#a78bfa"/>
+        <text x="200" y="452" text-anchor="middle" fill="#e6f4ff" font-size="14">Enviar OFERTA</text>
+        <text x="200" y="470" text-anchor="middle" fill="#94a3b8" font-size="11">fotos / vídeos / catálogo</text>
+
+        <rect x="380" y="420" rx="12" ry="12" width="240" height="70" fill="url(#g1)" stroke="#a78bfa"/>
+        <text x="500" y="452" text-anchor="middle" fill="#e6f4ff" font-size="14">Gerar ORÇAMENTO</text>
+        <text x="500" y="470" text-anchor="middle" fill="#94a3b8" font-size="11">confirma dados + valores</text>
+
+        <rect x="680" y="420" rx="12" ry="12" width="240" height="70" fill="url(#g1)" stroke="#a78bfa"/>
+        <text x="800" y="452" text-anchor="middle" fill="#e6f4ff" font-size="14">Agendar FOLLOW-UP</text>
+        <text x="800" y="470" text-anchor="middle" fill="#94a3b8" font-size="11">com faixas aleatórias (humano)</text>
+
+        <rect x="980" y="420" rx="12" ry="12" width="240" height="70" fill="url(#g1)" stroke="#34d399"/>
+        <text x="1100" y="452" text-anchor="middle" fill="#e6f4ff" font-size="14">LEAD QUENTE</text>
+        <text x="1100" y="470" text-anchor="middle" fill="#94a3b8" font-size="11">notificar responsável</text>
+
+        <!-- Handoff -->
+        <rect x="930" y="240" rx="12" ry="12" width="260" height="90" fill="url(#g1)" stroke="#34d399"/>
+        <text x="1060" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Handoff p/ NEGOCIAÇÃO</text>
+        <text x="1060" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">mover coluna + pausar IA</text>
+
+        <!-- CRM: notas -->
+        <rect x="330" y="400" rx="10" ry="10" width="260" height="40" fill="none" stroke="#94a3b8" stroke-dasharray="6 6"/>
+        <text x="460" y="426" text-anchor="middle" fill="#94a3b8" font-size="11">Notas do dia + link da conversa</text>
+
+        <!-- setas -->
+        <line x1="290" y1="95" x2="330" y2="275" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="460" y1="310" x2="460" y2="560" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="590" y1="595" x2="930" y2="595" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="1060" y1="560" x2="770" y2="330" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="770" y1="330" x2="200" y2="420" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="770" y1="330" x2="500" y2="420" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="770" y1="330" x2="800" y2="420" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="770" y1="330" x2="1100" y2="420" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="1100" y1="420" x2="1060" y2="330" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="200" y1="490" x2="460" y2="420" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="500" y1="490" x2="460" y2="420" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="800" y1="490" x2="460" y2="420" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrow)"/>
+      </svg>
+      <p class="caption">Azul: fluxo principal | Verde: alerta/handoff | Roxo tracejado: notas no CRM.</p>
+    </div>
+
+    <!-- DIAGRAMA 2: Máquina de Estados -->
+    <div class="card">
+      <h2>2) Máquina de Estados — Mapeada ao Kanban</h2>
+      <svg class="svgbox" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#c7f9cc" /></marker></defs>
+        <g font-family="Inter,Arial" font-size="13" fill="#eaf6ff" text-anchor="middle">
+          <rect x="40"  y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="135" y="75">A Trabalhar</text>
+          <rect x="260" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="355" y="75">Prospecção</text>
+          <rect x="480" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="575" y="75">Oferta</text>
+          <rect x="700" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="795" y="75">Orçamento</text>
+          <rect x="920" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#34d399"/><text x="1015" y="75">Negociação (humano)</text>
+          <rect x="480" y="130" width="190" height="60" rx="12" fill="#2a1620" stroke="#f87171"/><text x="575" y="165">Cadência Contínua (não para)</text>
+          <rect x="1140" y="40" width="100" height="60" rx="12" fill="#142034" stroke="#a78bfa"/><text x="1190" y="75">Pós-venda</text>
+        </g>
+        <line x1="230" y1="70" x2="260" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="450" y1="70" x2="480" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="670" y1="70" x2="700" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="890" y1="70" x2="920" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="1110" y1="70" x2="1140" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="575" y1="100" x2="575" y2="130" stroke="#f87171" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="575" y1="160" x2="355" y2="100" stroke="#f87171" stroke-width="2" marker-end="url(#arrow2)"/>
+      </svg>
+      <p class="caption">A IA conduz até <b>Negociação</b> e mantém um loop de <b>cadência contínua</b> configurável.</p>
+    </div>
+
+    <!-- DIAGRAMA 3: Decisão por Lead -->
+    <div class="card">
+      <h2>3) Decisão por Lead — Regras Essenciais</h2>
+      <svg class="svgbox" viewBox="0 0 1280 540" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#9dd6ff" /></marker></defs>
+
+        <g font-family="Inter,Arial" font-size="13" fill="#eaf6ff" text-anchor="middle">
+          <rect x="60" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="180" y="70">IA ATIVA para o lead?</text>
+          <text x="180" y="88" fill="#94a3b8" font-size="11">(campanha ligada / não handoff)</text>
+
+          <rect x="380" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="500" y="70">Contexto & Perfil carregados?</text>
+          <text x="500" y="88" fill="#94a3b8" font-size="11">mensagem gerada na hora via GPT</text>
+
+          <rect x="700" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="820" y="70">Enviar mensagem personalizada</text>
+          <text x="820" y="88" fill="#94a3b8" font-size="11">LLM + perfil + histórico</text>
+
+          <rect x="1020" y="40" width="200" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="1120" y="70">Aguardando resposta</text>
+
+          <!-- ramos -->
+          <rect x="180" y="220" width="220" height="64" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="290" y="252">Sem resposta</text>
+
+          <rect x="480" y="220" width="220" height="64" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="590" y="252">Follow-up / Agenda (aleatório)</text>
+
+          <rect x="780" y="220" width="220" height="64" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="890" y="252">Oferta</text>
+
+          <rect x="1060" y="220" width="220" height="64" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="1170" y="252">Orçamento</text>
+
+          <rect x="480" y="400" width="240" height="64" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="600" y="432">Lead Quente → Notificar</text>
+
+          <rect x="780" y="400" width="240" height="64" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="900" y="432">Handoff p/ Negociação</text>
+        </g>
+
+        <!-- setas -->
+        <line x1="300" y1="72" x2="380" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="620" y1="72" x2="700" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="940" y1="72" x2="1020" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+
+        <line x1="1120" y1="104" x2="290" y2="220" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="1120" y1="104" x2="590" y2="220" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="1120" y1="104" x2="890" y2="220" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="1120" y1="104" x2="1170" y2="220" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="590" y1="284" x2="600" y2="400" stroke="#34d399" stroke-width="2" marker-end="url(#arrow3)"/>
+        <line x1="890" y1="284" x2="900" y2="400" stroke="#34d399" stroke-width="2" marker-end="url(#arrow3)"/>
+      </svg>
+      <p class="caption">Cada decisão registra <em>nota do dia</em> no CRM + link da conversa.</p>
+    </div>
+
+    <!-- DIAGRAMA 4: Prospecção Contínua com Aleatoriedade -->
+    <div class="card">
+      <h2>4) Prospecção Contínua — Loop com Aleatoriedade</h2>
+      <svg class="svgbox" viewBox="0 0 1280 580" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#9dd6ff" /></marker></defs>
+
+        <g font-family="Inter,Arial" font-size="13" fill="#eaf6ff" text-anchor="middle">
+          <rect x="80" y="40" width="260" height="60" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="210" y="74">Mensagem enviada (T0)</text>
+
+          <rect x="420" y="40" width="220" height="60" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="530" y="72">Resposta recebida?</text>
+
+          <rect x="720" y="40" width="240" height="60" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="840" y="72">Processar intenção → Oferta/Orçamento</text>
+
+          <rect x="1030" y="40" width="200" height="60" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="1130" y="72">Lead quente / Handoff</text>
+
+          <!-- Sem resposta -->
+          <rect x="100" y="210" width="220" height="60" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="210" y="242">Sem resposta → esperar D1 (aleatório)</text>
+
+          <!-- Randomizador humano -->
+          <rect x="360" y="300" width="260" height="60" rx="18" fill="#0f1a2a" stroke="#94a3b8" stroke-dasharray="6 6"/>
+          <text x="490" y="334" fill="#cbd5e1" font-size="12">Randomizador humano (min–max + jitter)</text>
+
+          <rect x="360" y="210" width="240" height="60" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="480" y="242">T1: Reforço com valor</text>
+
+          <rect x="640" y="210" width="240" height="60" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="760" y="242">T2: Prova social / vídeo</text>
+
+          <rect x="920" y="210" width="240" height="60" rx="12" fill="#142034" stroke="#a78bfa"/>
+          <text x="1040" y="242">T3: "Ainda faz sentido?"</text>
+
+          <rect x="520" y="400" width="260" height="60" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="650" y="432">Check-in de longo prazo</text>
+          <text x="650" y="450" fill="#94a3b8" font-size="11">semanal/mensal — intervalo aleatório dentro da janela</text>
+
+          <!-- Resposta vaga -->
+          <rect x="420" y="120" width="220" height="60" rx="12" fill="#142034" stroke="#fbbf24"/>
+          <text x="530" y="154">Resposta vaga?</text>
+
+          <rect x="660" y="120" width="260" height="60" rx="12" fill="#142034" stroke="#fbbf24"/>
+          <text x="790" y="152">Pergunta de clarificação</text>
+        </g>
+
+        <!-- setas -->
+        <line x1="340" y1="70" x2="420" y2="70" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="640" y1="70" x2="720" y2="70" stroke="#34d399" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="960" y1="70" x2="1030" y2="70" stroke="#34d399" stroke-width="2" marker-end="url(#arrow4)"/>
+
+        <line x1="300" y1="240" x2="360" y2="240" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="600" y1="240" x2="640" y2="240" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="880" y1="240" x2="920" y2="240" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrow4)"/>
+
+        <!-- conexões com o randomizador -->
+        <line x1="210" y1="240" x2="360" y2="330" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow4)"/>
+        <line x1="620" y1="330" x2="480" y2="240" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow4)"/>
+      </svg>
+      <p class="caption">Delays D1/D2/D3 usam <b>faixas aleatórias</b> (min–max + jitter) para simular humano. Em cada passo a IA <b>atualiza o CRM via REST</b> (nota do dia, próxima tarefa, ajustes de perfil).</p>
+    </div>
+
+    <!-- DIAGRAMA 2b: Pós-Negociação & Logística (CRM) -->
+    <div class="card">
+      <h2>2b) Pós‑Negociação & Logística (CRM)</h2>
+      <svg class="svgbox" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Inter,Arial" font-size="12" fill="#eaf6ff" text-anchor="middle">
+          <rect x="40" y="40" width="170" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="125" y="75">Aguardando Liberação</text>
+          <rect x="230" y="40" width="140" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="300" y="75">AG. Inspeção</text>
+          <rect x="390" y="40" width="140" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="460" y="75">AG. Booking</text>
+          <rect x="550" y="40" width="170" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="635" y="75">AG. Carregamento</text>
+          <rect x="740" y="40" width="150" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="815" y="75">Aguardando BL</text>
+          <rect x="910" y="40" width="140" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="980" y="75">Consignação</text>
+          <rect x="1070" y="40" width="170" height="60" rx="12" fill="#1a2536" stroke="#a78bfa"/><text x="1155" y="75">Invoice / Pedido</text>
+        </g>
+        <g font-family="Inter,Arial" font-size="12">
+          <rect x="40" y="15" width="1200" height="18" rx="9" fill="#2a1620" stroke="#f87171"/>
+          <text x="640" y="28" fill="#fca5a5" text-anchor="middle">IA pausada (operacional). Pode enviar respostas passivas e resumos quando solicitada.</text>
+        </g>
+      </svg>
+      <p class="caption">Ao entrar em qualquer coluna acima, a IA é pausada para não conflitar com operações/logística. Ela ainda registra notas automáticas e atualizações de status no CRM.</p>
+    </div>
+
+    <!-- CARD X: SLA Engine (Prazo até) -->
+    <div class="card">
+      <h2>SLA Engine — baseado em “Prazo até”</h2>
+      <ul class="notes">
+        <li>Sincroniza campo <b>Prazo até</b> do CRM e fuso do cliente.</li>
+        <li>Cria/atualiza <b>Atividade</b> no CRM (equivalente ao “Inserir Atividade”) com lembretes.</li>
+        <li>Reprioriza diariamente por urgência (dias restantes) e valor do negócio.</li>
+        <li>Gera alertas internos se estourar SLA; reprograma follow-ups respeitando janelas e aleatoriedade.</li>
+      </ul>
+    </div>
+
+    <!-- CARD X: Owner Lock & Anti-Colisão -->
+    <div class="card">
+      <h2>Owner Lock & Anti‑Colisão</h2>
+      <ul class="notes">
+        <li>Se <b>responsável ≠ IA</b> ou coluna <b>≥ Negociação</b> ⇒ IA não envia mensagens (modo leitura/nota).</li>
+        <li>Movimento para <b>Negociação</b> provoca <b>handoff</b> e pausa da IA no lead.</li>
+        <li>Logs de colisão e reativação ficam registrados nas notas do CRM.</li>
+      </ul>
+    </div>
+
+    <!-- CARD X: Preferência de Canal & Fallback -->
+    <div class="card">
+      <h2>Preferência de Canal & Fallback</h2>
+      <ul class="notes">
+        <li>Canal por lead: WhatsApp ▸ e‑mail ▸ chamada (configurável).</li>
+        <li>Se o WhatsApp falhar ou não existir, <b>fallback automático</b> para e‑mail com a mesma mensagem gerada pelo GPT.</li>
+        <li>Tudo mantém a <b>persona Leandro</b> e o contexto do CRM.</li>
+      </ul>
+    </div>
+
+    <!-- CARD X: Feedback & Blocklist -->
+    <div class="card">
+      <h2>Feedback de Mensagem & Blocklist</h2>
+      <ul class="notes">
+        <li>UI com <b>👍 Aprovar</b> e <b>🚫 Reportar</b> por mensagem.</li>
+        <li>Frases reportadas alimentam a <b>blocklist da campanha</b> e ajustam o comportamento do agente.</li>
+        <li>Relatório de qualidade: % mensagens aprovadas, motivos de bloqueio mais comuns.</li>
+      </ul>
+    </div>
+
+    <!-- CARD X: Hot Lead Detector & Roteamento -->
+    <div class="card">
+      <h2>Detecção de Lead Quente & Roteamento</h2>
+      <ul class="notes">
+        <li>Heurísticas: frases de intenção de compra, pedido de condições, envio de dados, cliques em orçamento, velocidade de resposta.</li>
+        <li>Acionamento: notificação por WhatsApp interno aos números cadastrados (por região/owner).</li>
+        <li>Opcional: <b>auto‑mover para Negociação</b> e abrir tarefa para o vendedor.</li>
+      </ul>
+    </div>
+
+    <!-- CARD 5: Configurações de Cadência -->
+    <div class="card">
+      <h2>5) Configurações de Cadência (exemplo visual)</h2>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px">
+        <div style="grid-column:span 6;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Janela & Frequência</h3>
+          <ul class="notes">
+            <li>Dias: <b>Seg–Sáb</b> | Horários: <b>09:00–18:00</b> (fuso cliente)</li>
+            <li>Máx. <b>3 mensagens/dia</b> por lead | Quiet hours ativadas</li>
+            <li><b>Aleatoriedade humana</b>: faixa min–max + jitter; IA sempre gera mensagens via GPT</li>
+          </ul>
+        </div>
+        <div style="grid-column:span 6;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Sem resposta</h3>
+          <ol class="notes">
+            <li><b>D1 = 1–3h (aleatório)</b>: Reforço curto + CTA</li>
+            <li><b>D2 = 12–36h (aleatório)</b>: Conteúdo de valor (vídeo/chapa) + pergunta</li>
+            <li><b>D3 = 2–5 dias (aleatório)</b>: “Ainda faz sentido?” + oferta de ajuda</li>
+            <li>Depois: entra em <b>check-in semanal/mensal</b> com variação aleatória</li>
+          </ol>
+        </div>
+        <div style="grid-column:span 6;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Resposta vaga</h3>
+          <ul class="notes">
+            <li><b>P1 = 10–40min (aleatório)</b>: pergunta de clarificação</li>
+            <li><b>P2 = 2–6h (aleatório)</b>: exemplo concreto + múltipla escolha</li>
+            <li><b>P3 = 18–30h (aleatório)</b>: convite para ligação/mensagem de voz</li>
+          </ul>
+        </div>
+        <div style="grid-column:span 6;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Sincronização com CRM</h3>
+          <ul class="notes">
+            <li>Ler: leads, colunas, notas, perfil, histórico de compras</li>
+            <li>Escrever: nota do dia, próxima tarefa, atualização de perfil</li>
+            <li>Movimentar colunas conforme gatilhos (Oferta, Orçamento, Negociação)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="caption">Valores são exemplos visuais; no sistema real o gestor ajusta por lead/campanha.</p>
+    </div>
+
+    <!-- CARD 6: Kanban Prospecção Contínua -->
+    <div class="card">
+      <h2>6) Kanban da Prospecção Contínua (nunca para)</h2>
+      <svg class="svgbox" viewBox="0 0 1280 260" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Inter,Arial" font-size="12" fill="#eaf6ff">
+          <rect x="40" y="40" width="220" height="160" rx="12" fill="#1a2536" stroke="#60a5fa"/><text x="150" y="66" text-anchor="middle">T0 — Contato inicial</text>
+          <rect x="280" y="40" width="220" height="160" rx="12" fill="#1a2536" stroke="#60a5fa"/><text x="390" y="66" text-anchor="middle">T1 — Reforço</text>
+          <rect x="520" y="40" width="220" height="160" rx="12" fill="#1a2536" stroke="#60a5fa"/><text x="630" y="66" text-anchor="middle">T2 — Prova social</text>
+          <rect x="760" y="40" width="220" height="160" rx="12" fill="#1a2536" stroke="#60a5fa"/><text x="870" y="66" text-anchor="middle">T3 — Clarificação</text>
+          <rect x="1000" y="40" width="240" height="160" rx="12" fill="#1a2536" stroke="#34d399"/><text x="1120" y="66" text-anchor="middle">Check-in semanal/mensal</text>
+          <text x="640" y="220" text-anchor="middle" fill="#94a3b8">Loop infinito — sobe para Negociação quando sinal de compra</text>
+        </g>
+      </svg>
+    </div>
+
+    <!-- CARD 7: Campanhas por Tipo de Produto -->
+    <div class="card">
+      <h2>7) Campanhas por Tipo de Produto</h2>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px">
+        <div style="grid-column:span 7;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Seleção de Catálogos/Produtos</h3>
+          <ul class="notes">
+            <li><input type="checkbox" checked /> Granito Preto São Miguel (polido/escovado)</li>
+            <li><input type="checkbox" /> Mármore Carrara — chapas 2cm</li>
+            <li><input type="checkbox" /> Quartzito Aurora — amostras</li>
+            <li><input type="checkbox" /> Lotes promocionais da semana</li>
+          </ul>
+          <p class="notes">A campanha define linhas-guia, mas <b>cada mensagem é gerada no momento</b> via GPT usando o perfil do Leandro + o perfil do cliente no CRM.</p>
+        </div>
+        <div style="grid-column:span 5;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
+          <h3 style="margin:0 0 8px;font-size:16px">Regras por Campanha</h3>
+          <ul class="notes">
+            <li>Tom (formalidade, humor), idioma (PT/EN)</li>
+            <li>Prioridade de mídia (vídeo, foto, catálogo)</li>
+            <li>Objetivo por estágio (abrir conversa, qualificar, preço)</li>
+            <li>Critérios de lead quente e handoff</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Observação de integração -->
+    <div class="card">
+      <h2>Observação de Integração com CRM</h2>
+      <ul class="notes">
+        <li>Todos os <b>leads, perfis e anotações</b> são lidos do CRM via <b>API REST</b>.</li>
+        <li>A cada interação a IA <b>atualiza</b> o CRM: nota do dia, próxima tarefa, perfil e mudanças de coluna.</li>
+        <li>O link da conversa completa fica salvo na nota para auditoria e transparência.</li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>
+
