@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Showa-IA — Fluxo Completo</title>
+<title>Luchoa-IA — Fluxo Completo</title>
 <style>
   :root{
     --bg:#0b0f14; --card:#111821; --accent:#6ee7ff; --accent2:#a78bfa;
@@ -39,14 +39,14 @@
         <rect x="14" y="4" width="7" height="6" rx="2" stroke="var(--accent2)" stroke-width="1.5"/>
         <rect x="3" y="14" width="18" height="6" rx="2" stroke="var(--green)" stroke-width="1.5"/>
       </svg>
-      <h1>Showa-IA — Fluxo Operacional (HTML)</h1>
+      <h1>Luchoa-IA — Fluxo Operacional (HTML)</h1>
       <small>Visual interativo simples para apresentação</small>
     </header>
 
     <div class="card">
       <div class="legend">
         <span class="pill"><span class="dot lane-gestor"></span>Gestor</span>
-        <span class="pill"><span class="dot lane-sistema"></span>Sistema Showa-IA</span>
+        <span class="pill"><span class="dot lane-sistema"></span>Sistema Luchoa-IA</span>
         <span class="pill"><span class="dot lane-crm"></span>CRM (Kanban)</span>
         <span class="pill"><span class="dot lane-wa"></span>WhatsApp</span>
         <span class="pill"><span class="dot lane-cliente"></span>Cliente</span>
@@ -68,7 +68,7 @@
 
         <g font-family="Inter,Arial" font-size="12" fill="#c7d2fe" opacity=".9">
           <text x="70" y="40">Gestor</text>
-          <text x="70" y="220">Sistema Showa-IA</text>
+          <text x="70" y="220">Sistema Luchoa-IA</text>
           <text x="70" y="400">CRM (Kanban)</text>
           <text x="70" y="580">WhatsApp</text>
           <text x="1070" y="580">Cliente</text>
@@ -87,7 +87,7 @@
         <!-- Envia WhatsApp (sempre GPT) -->
         <rect x="330" y="560" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#34d399"/>
         <text x="460" y="592" text-anchor="middle" fill="#e6f4ff" font-size="14">Envia mensagem</text>
-        <text x="460" y="610" text-anchor="middle" fill="#94a3b8" font-size="11">Gerada na hora (GPT) — Persona Leandro + Perfil CRM</text>
+        <text x="460" y="610" text-anchor="middle" fill="#94a3b8" font-size="11">Gerada na hora (GPT) — Persona Leandro + Perfil CRM — Idioma auto (PT/EN/ES/AR)</text>
 
         <!-- Cliente responde -->
         <rect x="930" y="560" rx="12" ry="12" width="260" height="70" fill="url(#g1)" stroke="#fbbf24"/>
@@ -334,12 +334,22 @@
     </div>
 
     <!-- CARD X: Preferência de Canal & Fallback -->
-    <div class="card">
+    <div class=\"card\">
       <h2>Preferência de Canal & Fallback</h2>
-      <ul class="notes">
+      <ul class=\"notes\">
         <li>Canal por lead: WhatsApp ▸ e‑mail ▸ chamada (configurável).</li>
         <li>Se o WhatsApp falhar ou não existir, <b>fallback automático</b> para e‑mail com a mesma mensagem gerada pelo GPT.</li>
         <li>Tudo mantém a <b>persona Leandro</b> e o contexto do CRM.</li>
+      </ul>
+    </div>
+
+    <!-- CARD X: Multilíngue & Fuso -->
+    <div class=\"card\">
+      <h2>Multilíngue & Fuso (Global)</h2>
+      <ul class=\"notes\">
+        <li><b>Idiomas suportados</b>: PT ▸ EN ▸ ES ▸ AR (detecção automática por lead e por conversa).</li>
+        <li><b>Mercados</b>: Brasil + Estados Unidos (bases em ES e FL) e expansão Europa/Ásia.</li>
+        <li><b>Agendamentos</b> e cadência respeitam o <b>fuso do cliente</b> e feriados regionais configuráveis.</li>
       </ul>
     </div>
 
@@ -354,11 +364,11 @@
     </div>
 
     <!-- CARD X: Hot Lead Detector & Roteamento -->
-    <div class="card">
+    <div class=\"card\">
       <h2>Detecção de Lead Quente & Roteamento</h2>
-      <ul class="notes">
-        <li>Heurísticas: frases de intenção de compra, pedido de condições, envio de dados, cliques em orçamento, velocidade de resposta.</li>
-        <li>Acionamento: notificação por WhatsApp interno aos números cadastrados (por região/owner).</li>
+      <ul class=\"notes\">
+        <li>Heurísticas: pedido de <b>disponibilidade de chapa\/bundle</b>, interesse em <b>reserva (hold)</b>, envio de <b>medidas\/plantas</b>, <b>endereço de entrega</b>, confirmação de <b>acabamento (polido\/escovado)</b>, pedido de <b>timeline de embarque</b>, cliques no orçamento e <b>velocidade de resposta</b>.</li>
+        <li>Acionamento: notificação por WhatsApp interno aos números cadastrados (por região\/owner). Pode abrir tarefa para call imediata.</li>
         <li>Opcional: <b>auto‑mover para Negociação</b> e abrir tarefa para o vendedor.</li>
       </ul>
     </div>
@@ -478,29 +488,51 @@
     </div>
 
     <!-- CARD 7: Campanhas por Tipo de Produto -->
-    <div class="card">
+    <div class=\"card\">
       <h2>7) Campanhas por Tipo de Produto</h2>
-      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:14px">
-        <div style="grid-column:span 7;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
-          <h3 style="margin:0 0 8px;font-size:16px">Seleção de Catálogos/Produtos</h3>
-          <ul class="notes">
-            <li><input type="checkbox" checked /> Granito Preto São Miguel (polido/escovado)</li>
-            <li><input type="checkbox" /> Mármore Carrara — chapas 2cm</li>
-            <li><input type="checkbox" /> Quartzito Aurora — amostras</li>
-            <li><input type="checkbox" /> Lotes promocionais da semana</li>
+      <div style=\"display:grid;grid-template-columns:repeat(12,1fr);gap:14px\">
+        <div style=\"grid-column:span 7;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px\">
+          <h3 style=\"margin:0 0 8px;font-size:16px\">Seleção de Catálogos/Produtos</h3>
+          <ul class=\"notes\">
+            <li><input type=\"checkbox\" checked /> Patagonia Granite — exótico (Granito)</li>
+            <li><input type=\"checkbox\" /> Kintsugi Crystal — coleção (Crystal)</li>
+            <li><input type=\"checkbox\" /> Perla Venata — premium (Quartzito)</li>
+            <li><input type=\"checkbox\" /> Magma Gold — destaque (Granito)</li>
           </ul>
-          <p class="notes">A campanha define linhas-guia, mas <b>cada mensagem é gerada no momento</b> via GPT usando o perfil do Leandro + o perfil do cliente no CRM.</p>
+          <p class=\"notes\">A campanha define linhas-guia, mas <b>cada mensagem é gerada no momento</b> via GPT usando o perfil do Leandro + o perfil do cliente no CRM.</p>
         </div>
-        <div style="grid-column:span 5;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px">
-          <h3 style="margin:0 0 8px;font-size:16px">Regras por Campanha</h3>
-          <ul class="notes">
-            <li>Tom (formalidade, humor), idioma (PT/EN)</li>
-            <li>Prioridade de mídia (vídeo, foto, catálogo)</li>
-            <li>Objetivo por estágio (abrir conversa, qualificar, preço)</li>
+        <div style=\"grid-column:span 5;background:#0f1a2a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px\">
+          <h3 style=\"margin:0 0 8px;font-size:16px\">Regras por Campanha</h3>
+          <ul class=\"notes\">
+            <li>Tom (premium, consultivo), idioma (PT/EN/ES/AR)</li>
+            <li>Prioridade de mídia (foto da chapa, vídeo do lote, catálogo com variações naturais)</li>
+            <li>Objetivo por estágio (abrir conversa, qualificar, proposta, negociação)</li>
+            <li>Gatilhos de evento (Coverings Las Vegas, Cachoeiro Stone Fair) e pós-evento</li>
             <li>Critérios de lead quente e handoff</li>
           </ul>
         </div>
       </div>
+    </div>
+
+    <!-- CARD X: Integração com Inventory (Mobgran) -->
+    <div class=\"card\">
+      <h2>Integração com Inventory (Mobgran)</h2>
+      <ul class=\"notes\">
+        <li>Ler disponibilidade por <b>material ▸ bundle ▸ chapa</b> e criar <b>link profundo</b> para o item no app do inventory.</li>
+        <li>Permitir <b>anexar foto e vídeo</b> atualizados do lote na conversa.</li>
+        <li>Registrar no CRM a <b>versão do catálogo</b> e o <b>ID do bundle</b> citados na oferta/orçamento.</li>
+      </ul>
+    </div>
+
+    <!-- Segmentos & Playbook -->
+    <div class=\"card\">
+      <h2>Segmentos & Playbook (Luchoa)</h2>
+      <ul class=\"notes\">
+        <li><b>Arquitetos/Designers</b>: linguagem estética, aplicações (cozinha, bancada, revestimento), variação natural, manutenção.</li>
+        <li><b>Fabricators/Marceneiros</b>: espessura (2cm/3cm), acabamento (polido/escovado), aproveitamento da chapa, prazo de corte.</li>
+        <li><b>Distribuidores/Lojas</b>: mix de materiais (Quartzito/Granito/Mármore/Crystal/Agate), giro, disponibilidade, materiais exclusivos.</li>
+        <li><b>Incorporação/Imobiliário</b>: impacto de valor percebido (premium), prazos de obra, consistência de lote.</li>
+      </ul>
     </div>
 
     <!-- Observação de integração -->
