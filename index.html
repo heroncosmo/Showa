@@ -53,6 +53,22 @@
       </div>
     </div>
 
+    <!-- RESUMO PARA O CLIENTE -->
+    <div class="card">
+      <h2>Resumo para apresentação (sem jargão)</h2>
+      <ol class="notes">
+        <li><b>Conectamos ao CRM</b> e puxamos a lista de clientes com notas e perfil.</li>
+        <li>O gestor escolhe a <b>campanha</b> (produto) e ativa os clientes que a IA vai trabalhar.</li>
+        <li>A IA manda mensagens no <b>WhatsApp</b> como se fosse o <b>Leandro</b>, no idioma do cliente (PT/EN/ES/AR).</li>
+        <li>Se o cliente não responde, a IA segue uma <b>cadência com intervalos naturais</b> (parece humano) e continua tentando.</li>
+        <li>Quando o cliente demonstra interesse, a IA <b>oferta, orça e negocia</b> (com orçamentos pré‑definidos) ou chama o vendedor para assumir.</li>
+      </ol>
+      <p class="caption">Tudo fica registrado no CRM: nota do dia, próxima atividade e link da conversa.</p>
+      <div style="margin-top:10px">
+        <button onclick="window.print()" style="background:#0ea5e9;border:1px solid rgba(255,255,255,.18);color:white;padding:10px 14px;border-radius:10px;cursor:pointer">Imprimir / Salvar PDF</button>
+      </div>
+    </div>
+
     <!-- DIAGRAMA 1: Fluxo Macro (Sequência) -->
     <div class="card">
       <h2>1) Fluxo Macro — Seleção & Conversa</h2>
@@ -97,7 +113,7 @@
         <!-- IA interpreta -->
         <rect x="640" y="240" rx="12" ry="12" width="260" height="90" fill="url(#g1)" stroke="#6ee7ff"/>
         <text x="770" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Interpretar intenção</text>
-        <text x="770" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">LLM + perfil + regras Leandro</text>
+        <text x="770" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">IA (GPT) + perfil + regras Leandro</text>
 
         <!-- Branches -->
         <rect x="80" y="420" rx="12" ry="12" width="240" height="70" fill="url(#g1)" stroke="#a78bfa"/>
@@ -154,7 +170,7 @@
           <rect x="480" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="575" y="75">Oferta</text>
           <rect x="700" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="795" y="75">Orçamento</text>
           <rect x="920" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#34d399"/><text x="1015" y="75">Negociação (IA ↔ humano)</text>
-          <rect x="480" y="130" width="190" height="60" rx="12" fill="#2a1620" stroke="#f87171"/><text x="575" y="165">Cadência Contínua (não para)</text>
+          <rect x="480" y="130" width="190" height="60" rx="12" fill="#2a1620" stroke="#f87171"/><text x="575" y="165">Prospecção contínua (sempre ativa)</text>
           <rect x="1140" y="40" width="100" height="60" rx="12" fill="#142034" stroke="#a78bfa"/><text x="1190" y="75">Pós-venda</text>
         </g>
         <line x1="230" y1="70" x2="260" y2="70" stroke="#c7f9cc" stroke-width="2" marker-end="url(#arrow2)"/>
@@ -186,7 +202,7 @@
 
           <rect x="700" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
           <text x="820" y="70">Enviar mensagem personalizada</text>
-          <text x="820" y="88" fill="#94a3b8" font-size="11">LLM + perfil + histórico</text>
+          <text x="820" y="88" fill="#94a3b8" font-size="11">IA (GPT) + perfil + histórico</text>
 
           <rect x="1020" y="40" width="200" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
           <text x="1120" y="70">Aguardando resposta</text>
@@ -252,7 +268,7 @@
 
           <!-- Randomizador humano -->
           <rect x="360" y="300" width="260" height="60" rx="18" fill="#0f1a2a" stroke="#94a3b8" stroke-dasharray="6 6"/>
-          <text x="490" y="334" fill="#cbd5e1" font-size="12">Randomizador humano (min–max + jitter)</text>
+          <text x="490" y="334" fill="#cbd5e1" font-size="12">Intervalo natural (variação aleatória)</text>
 
           <rect x="360" y="210" width="240" height="60" rx="12" fill="#142034" stroke="#a78bfa"/>
           <text x="480" y="242">T1: Reforço com valor</text>
@@ -264,7 +280,7 @@
           <text x="1040" y="242">T3: "Ainda faz sentido?"</text>
 
           <rect x="520" y="400" width="260" height="60" rx="12" fill="#142034" stroke="#60a5fa"/>
-          <text x="650" y="432">Check-in de longo prazo</text>
+          <text x="650" y="432">Check-ins periódicos</text>
           <text x="650" y="450" fill="#94a3b8" font-size="11">semanal/mensal — intervalo aleatório dentro da janela</text>
 
           <!-- Resposta vaga -->
