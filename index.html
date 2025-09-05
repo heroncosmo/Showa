@@ -39,7 +39,7 @@
         <rect x="14" y="4" width="7" height="6" rx="2" stroke="var(--accent2)" stroke-width="1.5"/>
         <rect x="3" y="14" width="18" height="6" rx="2" stroke="var(--green)" stroke-width="1.5"/>
       </svg>
-      <h1>Showa-IA — Fluxo Operacional </h1>
+      <h1>Showa-IA — Fluxo Operacional (HTML)</h1>
       <small>Visual interativo simples para apresentação</small>
     </header>
 
@@ -118,8 +118,8 @@
 
         <!-- Handoff -->
         <rect x="930" y="240" rx="12" ry="12" width="260" height="90" fill="url(#g1)" stroke="#34d399"/>
-        <text x="1060" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Handoff p/ NEGOCIAÇÃO</text>
-        <text x="1060" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">mover coluna + pausar IA</text>
+        <text x="1060" y="272" text-anchor="middle" fill="#e6f4ff" font-size="14">Entrar em NEGOCIAÇÃO (IA por padrão; humano opcional)</text>
+        <text x="1060" y="290" text-anchor="middle" fill="#94a3b8" font-size="11">mover coluna; IA conduz e pode escalar p\/ humano</text>
 
         <!-- CRM: notas -->
         <rect x="330" y="400" rx="10" ry="10" width="260" height="40" fill="none" stroke="#94a3b8" stroke-dasharray="6 6"/>
@@ -153,7 +153,7 @@
           <rect x="260" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="355" y="75">Prospecção</text>
           <rect x="480" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="575" y="75">Oferta</text>
           <rect x="700" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#60a5fa"/><text x="795" y="75">Orçamento</text>
-          <rect x="920" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#34d399"/><text x="1015" y="75">Negociação (humano)</text>
+          <rect x="920" y="40" width="190" height="60" rx="12" fill="#142034" stroke="#34d399"/><text x="1015" y="75">Negociação (IA ↔ humano)</text>
           <rect x="480" y="130" width="190" height="60" rx="12" fill="#2a1620" stroke="#f87171"/><text x="575" y="165">Cadência Contínua (não para)</text>
           <rect x="1140" y="40" width="100" height="60" rx="12" fill="#142034" stroke="#a78bfa"/><text x="1190" y="75">Pós-venda</text>
         </g>
@@ -360,6 +360,64 @@
         <li>Heurísticas: frases de intenção de compra, pedido de condições, envio de dados, cliques em orçamento, velocidade de resposta.</li>
         <li>Acionamento: notificação por WhatsApp interno aos números cadastrados (por região/owner).</li>
         <li>Opcional: <b>auto‑mover para Negociação</b> e abrir tarefa para o vendedor.</li>
+      </ul>
+    </div>
+
+    <!-- CARD N: Módulo de Negociação (IA ou humano-in-the-loop) -->
+    <div class="card">
+      <h2>8) Módulo de Negociação — IA replicando Leandro (humano pode assumir)</h2>
+      <svg class="svgbox" viewBox="0 0 1280 360" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrowN" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#9dd6ff" /></marker></defs>
+        <g font-family="Inter,Arial" font-size="13" fill="#eaf6ff" text-anchor="middle">
+          <rect x="60" y="40" width="230" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="175" y="72">Entrada em Negociação</text>
+          <text x="175" y="90" fill="#94a3b8" font-size="11">IA assume (persona Leandro)</text>
+
+          <rect x="320" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="440" y="72">Propor proposta</text>
+          <text x="440" y="90" fill="#94a3b8" font-size="11">orçamentos pré‑definidos</text>
+
+          <rect x="600" y="40" width="240" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="720" y="72">Tratar objeções</text>
+          <text x="720" y="90" fill="#94a3b8" font-size="11">estratégias do Leandro</text>
+
+          <rect x="880" y="40" width="220" height="64" rx="12" fill="#142034" stroke="#60a5fa"/>
+          <text x="990" y="72">Alternativas</text>
+          <text x="990" y="90" fill="#94a3b8" font-size="11">lote/variação/condição</text>
+
+          <rect x="320" y="150" width="240" height="64" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="440" y="182">Confirmação de pedido</text>
+          <text x="440" y="200" fill="#94a3b8" font-size="11">aceite por mensagem</text>
+
+          <rect x="600" y="150" width="260" height="64" rx="12" fill="#142034" stroke="#34d399"/>
+          <text x="730" y="182">Fechamento básico</text>
+          <text x="730" y="200" fill="#94a3b8" font-size="11">mover p/ Aguardando Liberação + tarefa "faturar"</text>
+
+          <!-- Humano-in-the-loop -->
+          <rect x="60" y="250" width="220" height="64" rx="12" fill="#142034" stroke="#fbbf24"/>
+          <text x="170" y="282">Humano assume</text>
+          <text x="170" y="300" fill="#94a3b8" font-size="11">botão “Assumir” pausa IA</text>
+
+          <rect x="300" y="250" width="220" height="64" rx="12" fill="#142034" stroke="#fbbf24"/>
+          <text x="410" y="282">Devolver à IA</text>
+          <text x="410" y="300" fill="#94a3b8" font-size="11">botão “Devolver” retoma</text>
+        </g>
+
+        <!-- setas -->
+        <line x1="290" y1="72" x2="320" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="560" y1="72" x2="600" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="840" y1="72" x2="880" y2="72" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="880" y1="104" x2="440" y2="150" stroke="#9dd6ff" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="560" y1="214" x2="600" y2="182" stroke="#34d399" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="170" y1="250" x2="170" y2="104" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowN)"/>
+        <line x1="410" y1="250" x2="410" y2="104" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowN)"/>
+      </svg>
+      <ul class="notes">
+        <li><b>IA conduz a negociação</b> replicando a fala do Leandro (playbook treinado nas conversas dele).</li>
+        <li>Trabalha <b>apenas com orçamentos pré‑definidos</b> no sistema (sem cálculos programáticos).</li>
+        <li><b>Sem integração financeira</b>: nada de boletos, faturas, crédito. Ao fechar, cria <em>tarefa “faturar”</em> no CRM e move o card.</li>
+        <li><b>Humano pode assumir a qualquer momento</b> e depois devolver para a IA. Todas as trocas ficam logadas nas notas.</li>
       </ul>
     </div>
 
